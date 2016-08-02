@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var path = require('path');
 var app = express();
-
+var cheerio = require('cheerio');
+var request = require('request');
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 
 
+//uses local port 8080 or any available if local is not available
 var PORT = process.env.PORT || 8080;
 
 app.listen(PORT, function() {
