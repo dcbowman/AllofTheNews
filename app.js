@@ -2,7 +2,7 @@
 $(document).ready(){
  $.getJSON('/all', function(data){
   for var i = 0; i<data.length; i++{
-
+    db.stories.find({})
   }
  }
 }
@@ -15,7 +15,7 @@ $('#addcomment').on('click', function(){
     url: '/submit',
     dataType: 'json',
     data: {
-      thoughts: $('#thought').val(),
+      thoughts: $('#thought').val().trim(),
       created: Date.now()
     }
   })

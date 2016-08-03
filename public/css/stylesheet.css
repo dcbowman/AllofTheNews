@@ -1,0 +1,18 @@
+body{
+	background-color: #3FCC86;
+}
+#page-header{
+	background-color: #FFEBF0;
+}
+h1{
+	color:#A67137;
+}
+small{
+	color:#FC288F;
+}
+
+footer{
+	text-align: center;
+	background-color: #FFEBF0;
+	color: #8A4F80;
+}
