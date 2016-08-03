@@ -35,7 +35,7 @@ db.on('error', function(err){
 
 // Routes
 
-//Route 1 retrieves all of the data from the scrapedData collection as a json
+//Route 1 opens main page
 app.get('/', function(req, res) {
  
   res.render('index');
