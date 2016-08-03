@@ -36,14 +36,13 @@ db.on('error', function(err){
 // Routes
 
 //Route 1 retrieves all of the data from the scrapedData collection as a json
-app.get('/all', function(req, res) {
-  db.stories.find({})
-
-  res.send()
+app.get('/', function(req, res) {
+ 
+  res.render('index');
 });
 
 //Route 2 scrapes data from website and saves it to MongoDB
-app.get('/scrape', function(req, res){
+app.post('/submit', function(req, res){
 
 	//pulls info using request npm from website
 request('http://elitedaily.com/category/news/', function(err, res, body){
@@ -59,9 +58,21 @@ request('http://elitedaily.com/category/news/', function(err, res, body){
 		var link = $(this).find('a').attr('href');
 
 		//pushes those values into the results array
-		collection.insert(title, function(err, result){
-			console.log(error);
-			console.log(result);
+		results.push({
+			title: title,
+			url: link,
+			thoughts: []
+		});
+
+		console.log(results);
+		//pushes those values into the results array
+		db.stories.insert(results, function(err, result){
+			if (err){
+		    console.log(err);
+			}
+			else{
+		    res.send(result); //sends something back to ensure that it worked 
+			}
 		});
 		
 	  });
